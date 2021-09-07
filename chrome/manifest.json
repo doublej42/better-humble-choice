@@ -3,15 +3,6 @@
     "description": "Enhance the humble choice page and search",
     "version": "1.0",
     "manifest_version": 3,
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": [
-        "storage"
-    ],
-    "host_permissions": [
-        "https://*.humblebundle.com/*"
-    ],
     "content_scripts": [
         {
             "matches": [

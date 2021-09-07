@@ -29,6 +29,10 @@ function refreshKeysAndChoices() {
                 //This key needs to be refreshed
                 refreshChoice(key);
             }
+            else
+            {
+                console.log(key + ' is already done ',storedData);
+            }
         }
         catch(error){
             console.error(error);
@@ -62,14 +66,14 @@ function refreshChoice(key) {
             var choicePage = new DOMParser().parseFromString(responseText, "text/html");
             //console.log('choicePage', choicePage);
             var choicesData = JSON.parse(choicePage.getElementById('webpack-monthly-product-data').innerText);
-            console.log('choicesData', choicesData);
-            console.log('extras', choicesData.contentChoiceOptions.contentChoiceData.extras);
+            //console.log('choicesData', choicesData);
+            //console.log('extras', choicesData.contentChoiceOptions.contentChoiceData.extras);
             var choices = choicesData.contentChoiceOptions.contentChoiceData.initial.content_choices;
-            console.log('choices', choices);
+            //console.log('choices', choices);
             var choicesMade = choicesData.contentChoiceOptions.contentChoicesMade.initial.choices_made;
-            console.log('choicesMade', choicesMade);
+            //console.log('choicesMade', choicesMade);
             data.choicesRemaining = choicesData.contentChoiceOptions.contentChoiceData.initial.total_choices - choicesMade.length;
-            console.log('data.choicesRemaining', data.choicesRemaining);
+            //console.log('data.choicesRemaining', data.choicesRemaining);
             var gameData = [];
             for (const property in choices) {
                 console.log('property', property);
@@ -87,6 +91,7 @@ function refreshChoice(key) {
             }
             data.gameData = gameData;
             var localStorageKey = 'bhc-' + key;
+            console.log(key,data);
             localStorage.setItem(localStorageKey,JSON.stringify(data));
         });
 }
