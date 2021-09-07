@@ -9,6 +9,9 @@
     "permissions": [
         "storage"
     ],
+    "host_permissions": [
+        "https://*.humblebundle.com/*"
+    ],
     "content_scripts": [
         {
             "matches": [
